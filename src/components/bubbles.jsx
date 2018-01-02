@@ -11,14 +11,18 @@ const BubbleWrap = styled.div`
 function Bubbles({ bubbles, size }) {
   return (
     <BubbleWrap>
-      {bubbles.map(b => <Bubble key={b.id} size={size} />)}
+      {bubbles.map(b => <Bubble key={b.id} size={size} sizePx={b.sizePx} />)}
     </BubbleWrap>
   );
 }
 
 Bubbles.propTypes = {
   bubbles: PropTypes.arrayOf(
-    PropTypes.shape({ id: PropTypes.string, popped: PropTypes.bool }),
+    PropTypes.shape({
+      id: PropTypes.string,
+      popped: PropTypes.bool,
+      sizePx: PropTypes.number.isRequired,
+    }),
   ).isRequired,
   size: PropTypes.number.isRequired,
 };

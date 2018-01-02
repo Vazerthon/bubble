@@ -4,6 +4,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 
 import appReducer from './app';
 import bubbleReducer from './bubble';
+import bubbleSagas from './bubble.effects';
 
 const reducer = combineReducers({
   app: appReducer,
@@ -17,6 +18,6 @@ const store = createStore(
   composeWithDevTools(applyMiddleware(sagaMiddleware)),
 );
 
-export default store;
+[...bubbleSagas].forEach(saga => sagaMiddleware.run(saga));
 
-[].forEach(saga => sagaMiddleware.run(saga));
+export default store;

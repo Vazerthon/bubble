@@ -1,25 +1,30 @@
-import uuidv1 from 'uuid';
-
-const bubble = () => ({
-  popped: false,
-  id: uuidv1(),
-});
-
-const bubbles = count => Array.from(Array(count).keys()).map(() => bubble());
-
 const defaultBubbleState = {
   size: 10,
   minSize: 5,
   maxSize: 50,
-  bubbles: bubbles(100),
+  bubbles: [],
 };
 
-export const bubbleConstants = {};
+export const bubbleConstants = {
+  generateBubbles: '[BUBBLES] GENERATE ARRAY OF BUBBLES',
+  setBubbles: '[BUBBLES] SET BUBBLE ARRAY',
+};
 
-export const bubbleActions = {};
+export const bubbleActions = {
+  generateBubbles: size => ({
+    type: bubbleConstants.generateBubbles,
+    payload: { size },
+  }),
+  setBubbles: bubbles => ({
+    type: bubbleConstants.setBubbles,
+    payload: { bubbles },
+  }),
+};
 
 const bubbleReducer = (state = defaultBubbleState, action) => {
   switch (action.type) {
+    case bubbleConstants.setBubbles:
+      return { ...state, bubbles: action.payload.bubbles };
     default:
       return state;
   }

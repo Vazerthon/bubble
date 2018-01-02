@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const UnPoppedBubble = styled.div`
   width: ${({ size }) => `${size}vw`};
-  height: 50px;
+  height: ${({ sizePx }) => `${sizePx}px`};
   background: gray;
 
   :hover {
@@ -12,12 +12,13 @@ const UnPoppedBubble = styled.div`
   }
 `;
 
-function Bubble({ size }) {
-  return <UnPoppedBubble size={size} />;
+function Bubble({ size, sizePx }) {
+  return <UnPoppedBubble size={size} sizePx={sizePx} />;
 }
 
 Bubble.propTypes = {
   size: PropTypes.number.isRequired,
+  sizePx: PropTypes.number.isRequired,
 };
 
 export default Bubble;
