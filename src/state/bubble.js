@@ -8,6 +8,7 @@ const defaultBubbleState = {
 export const bubbleConstants = {
   generateBubbles: '[BUBBLES] GENERATE ARRAY OF BUBBLES',
   setBubbles: '[BUBBLES] SET BUBBLE ARRAY',
+  popBubble: '[BUBBLES] POP BY BY ID',
 };
 
 export const bubbleActions = {
@@ -18,6 +19,10 @@ export const bubbleActions = {
   setBubbles: bubbles => ({
     type: bubbleConstants.setBubbles,
     payload: { bubbles },
+  }),
+  popBubble: id => ({
+    type: bubbleConstants.popBubble,
+    payload: { id },
   }),
 };
 

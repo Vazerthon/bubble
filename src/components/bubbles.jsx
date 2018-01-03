@@ -11,7 +11,9 @@ const BubbleWrap = styled.div`
 function Bubbles({ bubbles, size }) {
   return (
     <BubbleWrap>
-      {bubbles.map(b => <Bubble key={b.id} size={size} sizePx={b.sizePx} />)}
+      {bubbles.map(b => (
+        <Bubble key={b.id} size={size} sizePx={b.sizePx} popped={b.popped} />
+      ))}
     </BubbleWrap>
   );
 }
