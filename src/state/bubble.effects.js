@@ -15,9 +15,9 @@ const bubbles = (count, sizePx) =>
 function* generateBubbles({ payload }) {
   const bubbleSizePc = yield payload.size;
   const { innerHeight, innerWidth } = yield window;
-  const bubbleSizePx = yield innerWidth / bubbleSizePc;
-  const rowsToFillScreen = yield Math.ceil(innerHeight / bubbleSizePx);
   const bubblesPerRow = yield 100 / bubbleSizePc;
+  const bubbleSizePx = yield innerWidth / bubblesPerRow;
+  const rowsToFillScreen = yield Math.ceil(innerHeight / bubbleSizePx);
   const bubbleCount = yield rowsToFillScreen * bubblesPerRow;
 
   yield put(bubbleActions.setBubbles(bubbles(bubbleCount, bubbleSizePx)));

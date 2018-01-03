@@ -8,8 +8,18 @@ const mapStateToProps = ({ bubble }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  // TODO use default size from state
-  componentDidMount: () => dispatch(bubbleActions.generateBubbles(10)),
+  generateBubbles: bubbleSize =>
+    dispatch(bubbleActions.generateBubbles(bubbleSize)),
 });
 
-export default connectWithLifecycle(mapStateToProps, mapDispatchToProps)(App);
+const mergeProps = (stateProps, dispatchProps) => ({
+  ...stateProps,
+  ...dispatchProps,
+  componentDidMount: () => dispatchProps.generateBubbles(stateProps.bubbleSize),
+});
+
+export default connectWithLifecycle(
+  mapStateToProps,
+  mapDispatchToProps,
+  mergeProps,
+)(App);

@@ -1,9 +1,16 @@
 import React from 'react';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Bubbles from './bubbles';
 
+const Container = styled.div``;
+
 function App({ bubbleSize, bubbles }) {
-  return <Bubbles size={bubbleSize} bubbles={bubbles} />;
+  return (
+    <Container>
+      <Bubbles size={bubbleSize} bubbles={bubbles} />;
+    </Container>
+  );
 }
 
 App.propTypes = {
