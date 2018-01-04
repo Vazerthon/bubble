@@ -5,10 +5,10 @@ import Bubbles from './bubbles';
 
 const Container = styled.div``;
 
-function App({ bubbleSize, bubbles }) {
+function App({ bubbleSize, bubbles, popBubble }) {
   return (
     <Container>
-      <Bubbles size={bubbleSize} bubbles={bubbles} />;
+      <Bubbles size={bubbleSize} bubbles={bubbles} popBubble={popBubble} />;
     </Container>
   );
 }
@@ -18,6 +18,7 @@ App.propTypes = {
     PropTypes.shape({ id: PropTypes.string, popped: PropTypes.bool }),
   ).isRequired,
   bubbleSize: PropTypes.number.isRequired,
+  popBubble: PropTypes.func.isRequired,
 };
 
 export default App;

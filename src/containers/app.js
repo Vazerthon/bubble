@@ -10,6 +10,7 @@ const mapStateToProps = ({ bubble }) => ({
 const mapDispatchToProps = dispatch => ({
   generateBubbles: bubbleSize =>
     dispatch(bubbleActions.generateBubbles(bubbleSize)),
+  popBubble: id => dispatch(bubbleActions.popBubble(id)),
 });
 
 const mergeProps = (stateProps, dispatchProps) => ({

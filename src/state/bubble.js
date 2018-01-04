@@ -26,10 +26,29 @@ export const bubbleActions = {
   }),
 };
 
+const popBubble = bubble => ({ ...bubble, popped: true });
+const findBubbleIndex = (id, bubbles) => bubbles.findIndex(b => b.id === id);
+const replaceBubble = (bubbles, index, bubble) => [
+  ...bubbles.slice(0, index),
+  bubble,
+  ...bubbles.slice(index + 1),
+];
+
 const bubbleReducer = (state = defaultBubbleState, action) => {
   switch (action.type) {
     case bubbleConstants.setBubbles:
       return { ...state, bubbles: action.payload.bubbles };
+    case bubbleConstants.popBubble:
+      return {
+        ...state,
+        bubbles: replaceBubble(
+          state.bubbles,
+          findBubbleIndex(action.payload.id, state.bubbles),
+          popBubble(
+            state.bubbles[findBubbleIndex(action.payload.id, state.bubbles)],
+          ),
+        ),
+      };
     default:
       return state;
   }

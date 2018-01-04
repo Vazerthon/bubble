@@ -8,11 +8,18 @@ const BubbleWrap = styled.div`
   flex-wrap: wrap;
 `;
 
-function Bubbles({ bubbles, size }) {
+function Bubbles({ bubbles, size, popBubble }) {
   return (
     <BubbleWrap>
       {bubbles.map(b => (
-        <Bubble key={b.id} size={size} sizePx={b.sizePx} popped={b.popped} />
+        <Bubble
+          key={b.id}
+          size={size}
+          sizePx={b.sizePx}
+          popped={b.popped}
+          id={b.id}
+          onPop={popBubble}
+        />
       ))}
     </BubbleWrap>
   );
@@ -27,6 +34,7 @@ Bubbles.propTypes = {
     }),
   ).isRequired,
   size: PropTypes.number.isRequired,
+  popBubble: PropTypes.func.isRequired,
 };
 
 export default Bubbles;
