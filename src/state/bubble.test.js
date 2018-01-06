@@ -20,4 +20,12 @@ describe('bubble reducer', () => {
       { id: 'c', popped: false },
     ]);
   });
+
+  it('sets bubble size', () => {
+    const initialState = { size: 10 };
+
+    const result = reducer(initialState, bubbleActions.setSize(20));
+
+    expect(result.size).toBe(20);
+  });
 });

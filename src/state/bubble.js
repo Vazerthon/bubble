@@ -1,6 +1,6 @@
 const defaultBubbleState = {
   size: 10,
-  minSize: 5,
+  minSize: 10,
   maxSize: 50,
   bubbles: [],
 };
@@ -9,6 +9,8 @@ export const bubbleConstants = {
   generateBubbles: '[BUBBLES] GENERATE ARRAY OF BUBBLES',
   setBubbles: '[BUBBLES] SET BUBBLE ARRAY',
   popBubble: '[BUBBLES] POP BY BY ID',
+  sizeChange: '[BUBBLES] BUBBLE SIZE CHANGE',
+  setSize: '[BUBBLES] SET NEW BUBBLE SIZE',
 };
 
 export const bubbleActions = {
@@ -23,6 +25,14 @@ export const bubbleActions = {
   popBubble: id => ({
     type: bubbleConstants.popBubble,
     payload: { id },
+  }),
+  sizeChange: size => ({
+    type: bubbleConstants.sizeChange,
+    payload: { size },
+  }),
+  setSize: size => ({
+    type: bubbleConstants.setSize,
+    payload: { size },
   }),
 };
 
@@ -39,14 +49,19 @@ const bubblePopper = (id, bubbles) => {
   return replaceBubble(bubbles, index, popBubble(bubbles[index]));
 };
 
-const bubbleReducer = (state = defaultBubbleState, action) => {
-  switch (action.type) {
+const bubbleReducer = (state = defaultBubbleState, { type, payload }) => {
+  switch (type) {
     case bubbleConstants.setBubbles:
-      return { ...state, bubbles: action.payload.bubbles };
+      return { ...state, bubbles: payload.bubbles };
     case bubbleConstants.popBubble:
       return {
         ...state,
-        bubbles: bubblePopper(action.payload.id, state.bubbles),
+        bubbles: bubblePopper(payload.id, state.bubbles),
+      };
+    case bubbleConstants.setSize:
+      return {
+        ...state,
+        size: payload.size,
       };
     default:
       return state;
