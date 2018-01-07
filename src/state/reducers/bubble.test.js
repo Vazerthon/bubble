@@ -1,6 +1,7 @@
 /* eslint-env jest */
 
-import reducer, { bubbleActions } from './bubble';
+import reducer from './bubble';
+import { actions } from '../actions/bubble';
 
 describe('bubble reducer', () => {
   it('pops bubbles', () => {
@@ -12,7 +13,7 @@ describe('bubble reducer', () => {
       ],
     };
 
-    const result = reducer(initialState, bubbleActions.popBubble('b'));
+    const result = reducer(initialState, actions.popBubble('b'));
 
     expect(result.bubbles).toEqual([
       { id: 'a', popped: false },
@@ -24,7 +25,7 @@ describe('bubble reducer', () => {
   it('sets bubble size', () => {
     const initialState = { size: 10 };
 
-    const result = reducer(initialState, bubbleActions.setSize(20));
+    const result = reducer(initialState, actions.setSize(20));
 
     expect(result.size).toBe(20);
   });

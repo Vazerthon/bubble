@@ -1,7 +1,7 @@
 import { takeEvery, put } from 'redux-saga/effects';
 import uuidv1 from 'uuid';
 
-import { bubbleConstants, bubbleActions } from './bubble';
+import { actions, constants } from '../actions/bubble';
 
 const bubble = sizePx => ({
   popped: false,
@@ -20,20 +20,20 @@ function* generateBubbles({ payload: { size } }) {
   const rowsToFillScreen = yield Math.ceil(innerHeight / bubbleSizePx);
   const bubbleCount = yield Math.ceil(rowsToFillScreen * bubblesPerRow);
 
-  yield put(bubbleActions.setBubbles(bubbles(bubbleCount, bubbleSizePx)));
+  yield put(actions.setBubbles(bubbles(bubbleCount, bubbleSizePx)));
 }
 
 function* setSizeAndGenerateBubbles(action) {
-  yield put(bubbleActions.setSize(action.payload.size));
+  yield put(actions.setSize(action.payload.size));
   yield generateBubbles(action);
 }
 
 function* generateBubblesSaga() {
-  yield takeEvery(bubbleConstants.generateBubbles, generateBubbles);
+  yield takeEvery(constants.generateBubbles, generateBubbles);
 }
 
 function* resizeBubblesSaga() {
-  yield takeEvery(bubbleConstants.sizeChange, setSizeAndGenerateBubbles);
+  yield takeEvery(constants.sizeChange, setSizeAndGenerateBubbles);
 }
 
 const bubbleEffects = [generateBubblesSaga, resizeBubblesSaga];

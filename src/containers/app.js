@@ -1,6 +1,6 @@
 import { connectWithLifecycle } from 'react-lifecycle-component';
 import App from '../components/app';
-import { bubbleActions } from '../state/bubble';
+import { actions } from '../state/actions/bubble';
 
 const mapStateToProps = ({ bubble }) => ({
   bubbleSize: bubble.size,
@@ -10,10 +10,9 @@ const mapStateToProps = ({ bubble }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  generateBubbles: bubbleSize =>
-    dispatch(bubbleActions.generateBubbles(bubbleSize)),
-  popBubble: id => dispatch(bubbleActions.popBubble(id)),
-  onBubbleSizeChange: size => dispatch(bubbleActions.sizeChange(size)),
+  generateBubbles: bubbleSize => dispatch(actions.generateBubbles(bubbleSize)),
+  popBubble: id => dispatch(actions.popBubble(id)),
+  onBubbleSizeChange: size => dispatch(actions.sizeChange(size)),
 });
 
 const mergeProps = (stateProps, dispatchProps) => ({
