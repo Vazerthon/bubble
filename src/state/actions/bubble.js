@@ -2,29 +2,24 @@ export const constants = {
   generateBubbles: '[BUBBLES] GENERATE ARRAY OF BUBBLES',
   setBubbles: '[BUBBLES] SET BUBBLE ARRAY',
   popBubble: '[BUBBLES] POP BY BY ID',
-  sizeChange: '[BUBBLES] BUBBLE SIZE CHANGE',
-  setSize: '[BUBBLES] SET NEW BUBBLE SIZE',
+  bubblesPerRowChange: '[BUBBLES] CHANGE NUMBER OF BUBBLES PER ROW',
 };
 
 export const actions = {
-  generateBubbles: size => ({
+  generateBubbles: count => ({
     type: constants.generateBubbles,
-    payload: { size },
+    payload: { count },
   }),
-  setBubbles: bubbles => ({
+  setBubbles: ({ bubbles, bubblesPerRow, bubbleSizePx }) => ({
     type: constants.setBubbles,
-    payload: { bubbles },
+    payload: { bubbles, bubblesPerRow, bubbleSizePx },
   }),
   popBubble: id => ({
     type: constants.popBubble,
     payload: { id },
   }),
-  sizeChange: size => ({
-    type: constants.sizeChange,
-    payload: { size },
-  }),
-  setSize: size => ({
-    type: constants.setSize,
-    payload: { size },
+  bubblesPerRowChange: count => ({
+    type: constants.bubblesPerRowChange,
+    payload: { count },
   }),
 };

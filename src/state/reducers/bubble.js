@@ -1,9 +1,10 @@
 import { constants } from '../actions/bubble';
 
 const defaultBubbleState = {
-  size: 10,
-  minSize: 10,
-  maxSize: 50,
+  bubblesPerRow: 12,
+  minBubblesPerRow: 4,
+  maxBubblesPerRow: 40,
+  bubbleSizePx: 0,
   bubbles: [],
 };
 
@@ -23,16 +24,16 @@ const bubblePopper = (id, bubbles) => {
 const bubbleReducer = (state = defaultBubbleState, { type, payload }) => {
   switch (type) {
     case constants.setBubbles:
-      return { ...state, bubbles: payload.bubbles };
+      return {
+        ...state,
+        bubbles: payload.bubbles,
+        bubblesPerRow: payload.bubblesPerRow,
+        bubbleSizePx: payload.bubbleSizePx,
+      };
     case constants.popBubble:
       return {
         ...state,
         bubbles: bubblePopper(payload.id, state.bubbles),
-      };
-    case constants.setSize:
-      return {
-        ...state,
-        size: payload.size,
       };
     default:
       return state;

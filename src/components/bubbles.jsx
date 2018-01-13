@@ -6,16 +6,16 @@ import Bubble from './bubble';
 const BubbleWrap = styled.div`
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 `;
 
-function Bubbles({ bubbles, size, popBubble }) {
+function Bubbles({ bubbles, bubbleSizePx, popBubble }) {
   return (
     <BubbleWrap>
       {bubbles.map(b => (
         <Bubble
           key={b.id}
-          size={size}
-          sizePx={b.sizePx}
+          size={bubbleSizePx}
           popped={b.popped}
           id={b.id}
           onPop={popBubble}
@@ -30,11 +30,10 @@ Bubbles.propTypes = {
     PropTypes.shape({
       id: PropTypes.string,
       popped: PropTypes.bool,
-      sizePx: PropTypes.number.isRequired,
     }),
   ).isRequired,
-  size: PropTypes.number.isRequired,
   popBubble: PropTypes.func.isRequired,
+  bubbleSizePx: PropTypes.number.isRequired,
 };
 
 export default Bubbles;

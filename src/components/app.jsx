@@ -1,41 +1,22 @@
 import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
-import Bubbles from './bubbles';
-import Menu from './menu';
+import Bubbles from '../containers/bubbles';
+import Menu from '../containers/menu';
 
-const Container = styled.div``;
+const Container = styled.div`
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
 
-function App({
-  bubbleSize,
-  bubbles,
-  popBubble,
-  minBubbleSize,
-  maxBubbleSize,
-  onBubbleSizeChange,
-}) {
+function App() {
   return (
     <Container>
-      <Menu
-        bubbleSize={bubbleSize}
-        minBubbleSize={minBubbleSize}
-        maxBubbleSize={maxBubbleSize}
-        onBubbleSizeChange={onBubbleSizeChange}
-      />
-      <Bubbles size={bubbleSize} bubbles={bubbles} popBubble={popBubble} />;
+      <Menu />
+      <Bubbles />
     </Container>
   );
 }
-
-App.propTypes = {
-  bubbles: PropTypes.arrayOf(
-    PropTypes.shape({ id: PropTypes.string, popped: PropTypes.bool }),
-  ).isRequired,
-  bubbleSize: PropTypes.number.isRequired,
-  popBubble: PropTypes.func.isRequired,
-  minBubbleSize: PropTypes.number.isRequired,
-  maxBubbleSize: PropTypes.number.isRequired,
-  onBubbleSizeChange: PropTypes.func.isRequired,
-};
 
 export default App;
