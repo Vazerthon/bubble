@@ -1,7 +1,7 @@
 import { constants } from '../actions/bubble';
 
 const defaultBubbleState = {
-  bubblesPerRow: 12,
+  bubblesPerRow: 30,
   minBubblesPerRow: 4,
   maxBubblesPerRow: 40,
   bubbleSizePx: 0,
@@ -9,16 +9,25 @@ const defaultBubbleState = {
 };
 
 const findBubbleIndex = (id, bubbles) => bubbles.findIndex(b => b.id === id);
-const popBubble = bubble => ({ ...bubble, popped: true });
+const popBubble = (bubble, image, rotation) => ({
+  ...bubble,
+  popped: true,
+  image,
+  rotation,
+});
 const replaceBubble = (bubbles, index, bubble) => [
   ...bubbles.slice(0, index),
   bubble,
   ...bubbles.slice(index + 1),
 ];
 
-const bubblePopper = (id, bubbles) => {
+const bubblePopper = ({ image, rotation, id }, bubbles) => {
   const index = findBubbleIndex(id, bubbles);
-  return replaceBubble(bubbles, index, popBubble(bubbles[index]));
+  return replaceBubble(
+    bubbles,
+    index,
+    popBubble(bubbles[index], image, rotation),
+  );
 };
 
 const bubbleReducer = (state = defaultBubbleState, { type, payload }) => {
@@ -33,7 +42,7 @@ const bubbleReducer = (state = defaultBubbleState, { type, payload }) => {
     case constants.popBubble:
       return {
         ...state,
-        bubbles: bubblePopper(payload.id, state.bubbles),
+        bubbles: bubblePopper(payload, state.bubbles),
       };
     default:
       return state;

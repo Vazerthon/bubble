@@ -14,9 +14,9 @@ export const actions = {
     type: constants.setBubbles,
     payload: { bubbles, bubblesPerRow, bubbleSizePx },
   }),
-  popBubble: id => ({
+  popBubble: (image, rotation, id) => ({
     type: constants.popBubble,
-    payload: { id },
+    payload: { image, rotation, id },
   }),
   bubblesPerRowChange: count => ({
     type: constants.bubblesPerRowChange,

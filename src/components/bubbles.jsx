@@ -18,6 +18,8 @@ function Bubbles({ bubbles, bubbleSizePx, popBubble }) {
           size={bubbleSizePx}
           popped={b.popped}
           id={b.id}
+          rotation={b.rotation}
+          image={b.image}
           onPop={popBubble}
         />
       ))}
@@ -30,6 +32,8 @@ Bubbles.propTypes = {
     PropTypes.shape({
       id: PropTypes.string,
       popped: PropTypes.bool,
+      rotation: PropTypes.number,
+      image: PropTypes.string,
     }),
   ).isRequired,
   popBubble: PropTypes.func.isRequired,

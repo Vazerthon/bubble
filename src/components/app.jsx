@@ -13,8 +13,8 @@ const Container = styled.div`
 function App() {
   return (
     <Container>
-      <Menu />
       <Bubbles />
+      <Menu />
     </Container>
   );
 }

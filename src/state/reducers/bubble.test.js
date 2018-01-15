@@ -13,20 +13,31 @@ describe('bubble reducer', () => {
       ],
     };
 
-    const result = reducer(initialState, actions.popBubble('b'));
+    const result = reducer(
+      initialState,
+      actions.popBubble('image data', 45, 'b'),
+    ).bubbles[1];
 
-    expect(result.bubbles).toEqual([
-      { id: 'a', popped: false },
-      { id: 'b', popped: true },
-      { id: 'c', popped: false },
-    ]);
+    expect(result.popped).toBe(true);
+    expect(result.image).toEqual('image data');
+    expect(result.rotation).toEqual(45);
   });
 
-  it('sets bubble size', () => {
-    const initialState = { size: 10 };
+  it('sets bubble data correctly', () => {
+    const initialState = {};
 
-    const result = reducer(initialState, actions.setSize(20));
+    const bubbles = [{ id: 'a', popped: false }, { id: 'b', popped: false }];
 
-    expect(result.size).toBe(20);
+    const bubblesPerRow = 1;
+    const bubbleSizePx = 2;
+
+    const result = reducer(
+      initialState,
+      actions.setBubbles({ bubbles, bubbleSizePx, bubblesPerRow }),
+    );
+
+    expect(result.bubbles).toEqual(bubbles);
+    expect(result.bubbleSizePx).toEqual(bubbleSizePx);
+    expect(result.bubblesPerRow).toEqual(bubblesPerRow);
   });
 });

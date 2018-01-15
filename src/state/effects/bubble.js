@@ -1,14 +1,8 @@
 import { takeEvery, put } from 'redux-saga/effects';
-import uuidv1 from 'uuid';
 
 import { actions, constants } from '../actions/bubble';
 
-const bubble = () => ({
-  popped: false,
-  id: uuidv1(),
-});
-
-const bubbles = count => Array.from(Array(count).keys()).map(() => bubble());
+import { bubbles } from '../helpers/bubble';
 
 function* generateBubbles({ payload: { count } }) {
   const bubblesPerRow = yield count;
