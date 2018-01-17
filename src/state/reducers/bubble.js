@@ -1,9 +1,9 @@
 import { constants } from '../actions/bubble';
 
 const defaultBubbleState = {
-  bubblesPerRow: 30,
+  bubblesPerRow: 12,
   minBubblesPerRow: 4,
-  maxBubblesPerRow: 40,
+  maxBubblesPerRow: 20,
   bubbleSizePx: 0,
   bubbles: [],
 };
