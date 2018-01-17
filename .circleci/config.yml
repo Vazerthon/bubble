@@ -44,6 +44,10 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
         
+      - add_ssh_keys:
+          fingerprints:
+            - "98:5b:b5:28:ba:fa:99:a9:f8:f9:7b:ce:94:2b:1c:fa"
+
       - run: yarn predeploy
       - run: yarn deploy
 workflows:
