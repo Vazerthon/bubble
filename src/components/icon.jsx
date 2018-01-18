@@ -13,6 +13,7 @@ const Container = styled.button`
   box-shadow: 2px 1px 6px #222222;
   background: #444444;
   outline: none;
+  cursor: pointer;
 
   :hover {
     background: ${({ disabled }) => (disabled ? '#662222' : '#666666')};

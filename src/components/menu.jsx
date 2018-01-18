@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import { VolumeX, Volume2, Plus, Minus } from 'react-feather';
 
-import ArrowDown from './arrow-down';
+import MenuHandle from './menu-handle';
 import Icon from './icon';
 
 const Container = styled.div`
@@ -24,15 +24,12 @@ const MenuBar = styled.div`
   flex: 1;
   padding: 8px;
   border-bottom: 3px solid #222222;
-  z-index: 2;
 `;
 
-const OpenCloseHandle = styled(ArrowDown)`
-  width: 50px;
-  height: 30px;
+const OpenCloseHandle = styled.div`
   position: fixed;
-  left: calc(50vw - 25px);
-  top: calc(5vh + 4px);
+  left: calc(50vw - 2px);
+  top: calc(5vh - 10px);
 `;
 
 const IconContainer = styled(Icon)`
@@ -79,7 +76,9 @@ function Menu({
           {sound ? <Volume2 /> : <VolumeX />}
         </IconContainer>
       </MenuBar>
-      <OpenCloseHandle onClick={toggleOpenClose} />
+      <OpenCloseHandle>
+        <MenuHandle onClick={toggleOpenClose} />
+      </OpenCloseHandle>
     </Container>
   );
 }
