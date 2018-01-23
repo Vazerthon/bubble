@@ -43,4 +43,24 @@ describe('app reducer', () => {
 
     expect(result.sound).toBe(false);
   });
+
+  it('enables about view when disabled', () => {
+    const initialState = {
+      showAbout: false,
+    };
+
+    const result = reducer(initialState, actions.toggleAbout());
+
+    expect(result.showAbout).toBe(true);
+  });
+
+  it('disables about view when enabled', () => {
+    const initialState = {
+      showAbout: true,
+    };
+
+    const result = reducer(initialState, actions.toggleAbout());
+
+    expect(result.showAbout).toBe(false);
+  });
 });

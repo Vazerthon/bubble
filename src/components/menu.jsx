@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-import { VolumeX, Volume2, Plus, Minus } from 'react-feather';
+import { VolumeX, Volume2, Plus, Minus, X, HelpCircle } from 'react-feather';
 
 import MenuHandle from './menu-handle';
 import Icon from './icon';
@@ -24,6 +24,25 @@ const MenuBar = styled.div`
   flex: 1;
   padding: 8px;
   border-bottom: 3px solid #222222;
+  justify-content: space-between;
+`;
+
+const Left = styled.div`
+  display: flex;
+  flex-grow: 1;
+  justify-content: space-around;
+`;
+
+const Middle = styled.div`
+  display: flex;
+  flex-grow: 2; /* TODO grow less on small screens? */
+  justify-content: space-around;
+`;
+
+const Right = styled.div`
+  display: flex;
+  flex-grow: 1;
+  justify-content: space-around;
 `;
 
 const OpenCloseHandle = styled.div`
@@ -48,6 +67,8 @@ function Menu({
   onBubblesPerRowChange,
   sound,
   toggleSound,
+  showAbout,
+  toggleAbout,
 }) {
   const setter = setBubblesPerRow(
     minBubblesPerRow,
@@ -60,21 +81,29 @@ function Menu({
   return (
     <Container open={open}>
       <MenuBar>
-        <IconContainer
-          onClick={stepBubblesDown}
-          disabled={bubblesPerRow - minBubblesPerRow < minBubblesPerRow}
-        >
-          <Minus />
-        </IconContainer>
-        <IconContainer
-          onClick={stepBubblesUp}
-          disabled={bubblesPerRow + minBubblesPerRow > maxBubblesPerRow}
-        >
-          <Plus />
-        </IconContainer>
-        <IconContainer onClick={toggleSound}>
-          {sound ? <Volume2 /> : <VolumeX />}
-        </IconContainer>
+        <Left>
+          <IconContainer
+            onClick={stepBubblesDown}
+            disabled={bubblesPerRow - minBubblesPerRow < minBubblesPerRow}
+          >
+            <Minus />
+          </IconContainer>
+          <IconContainer
+            onClick={stepBubblesUp}
+            disabled={bubblesPerRow + minBubblesPerRow > maxBubblesPerRow}
+          >
+            <Plus />
+          </IconContainer>
+          <IconContainer onClick={toggleSound}>
+            {sound ? <Volume2 /> : <VolumeX />}
+          </IconContainer>
+        </Left>
+        <Middle />
+        <Right>
+          <IconContainer onClick={toggleAbout}>
+            {showAbout ? <X /> : <HelpCircle />}
+          </IconContainer>
+        </Right>
       </MenuBar>
       <OpenCloseHandle>
         <MenuHandle onClick={toggleOpenClose} />
@@ -92,11 +121,15 @@ Menu.propTypes = {
   onBubblesPerRowChange: PropTypes.func.isRequired,
   sound: PropTypes.bool,
   toggleSound: PropTypes.func,
+  showAbout: PropTypes.bool,
+  toggleAbout: PropTypes.func,
 };
 
 Menu.defaultProps = {
   sound: false,
   toggleSound: () => {},
+  showAbout: false,
+  toggleAbout: () => {},
 };
 
 export default Menu;

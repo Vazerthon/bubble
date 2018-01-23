@@ -2,8 +2,12 @@ import { connectWithLifecycle } from 'react-lifecycle-component';
 import App from '../components/app';
 import { actions } from '../state/actions/bubble';
 
-const mapStateToProps = ({ bubble: { bubblesPerRow } }) => ({
+const mapStateToProps = ({
+  bubble: { bubblesPerRow },
+  app: { showAbout },
+}) => ({
   bubblesPerRow,
+  showAbout,
 });
 
 const mapDispatchToProps = dispatch => ({
