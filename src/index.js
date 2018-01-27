@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import store from './state/store';
 import App from './containers/app';
-// import registerServiceWorker from './registerServiceWorker';
+
+import registerServiceWorker from './registerServiceWorker';
 
 /* eslint-disable react/jsx-filename-extension */
 ReactDOM.render(
@@ -14,4 +15,4 @@ ReactDOM.render(
 );
 /* eslint-enable react/jsx-filename-extension */
 
-// registerServiceWorker();
+registerServiceWorker();

@@ -17,7 +17,7 @@ const mapStateToProps = ({
 
 const mapDispatchToProps = dispatch => ({
   onBubblesPerRowChange: count =>
-    dispatch(bubbleActions.bubblesPerRowChange(count)),
+    dispatch(bubbleActions.generateBubbles(count)),
   toggleOpenClose: () => dispatch(appActions.toggleMenu()),
   toggleSound: () => dispatch(appActions.toggleSound()),
   toggleAbout: () => dispatch(appActions.toggleAbout()),

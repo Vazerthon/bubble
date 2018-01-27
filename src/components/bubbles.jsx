@@ -9,7 +9,7 @@ const BubbleWrap = styled.div`
   justify-content: center;
 `;
 
-function Bubbles({ bubbles, bubbleSizePx, popBubble }) {
+function Bubbles({ sound, bubbles, bubbleSizePx, popBubble }) {
   return (
     <BubbleWrap>
       {bubbles.map(b => (
@@ -20,7 +20,7 @@ function Bubbles({ bubbles, bubbleSizePx, popBubble }) {
           id={b.id}
           rotation={b.rotation}
           image={b.image}
-          onPop={popBubble}
+          onPop={popBubble(sound)}
         />
       ))}
     </BubbleWrap>
@@ -28,6 +28,7 @@ function Bubbles({ bubbles, bubbleSizePx, popBubble }) {
 }
 
 Bubbles.propTypes = {
+  sound: PropTypes.bool.isRequired,
   bubbles: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string,

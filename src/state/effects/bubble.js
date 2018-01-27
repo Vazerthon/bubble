@@ -1,7 +1,5 @@
-import { takeEvery, put } from 'redux-saga/effects';
-
+import { takeEvery, takeLatest, put, call } from 'redux-saga/effects';
 import { actions, constants } from '../actions/bubble';
-
 import { bubbles } from '../helpers/bubble';
 
 function* generateBubbles({ payload: { count } }) {
@@ -20,14 +18,21 @@ function* generateBubbles({ payload: { count } }) {
   );
 }
 
+function* popBubble({ payload }) {
+  const { sound, image, rotation, id } = payload;
+
+  yield call(sound);
+  yield put(actions.popBubble(image, rotation, id));
+}
+
 function* generateBubblesSaga() {
   yield takeEvery(constants.generateBubbles, generateBubbles);
 }
 
-function* changeBubblesPerRowSaga() {
-  yield takeEvery(constants.bubblesPerRowChange, generateBubbles);
+function* requestPopBubbleSaga() {
+  yield takeLatest(constants.requestPopBubble, popBubble);
 }
 
-const bubbleEffects = [generateBubblesSaga, changeBubblesPerRowSaga];
+const bubbleEffects = [generateBubblesSaga, requestPopBubbleSaga];
 
 export default bubbleEffects;
