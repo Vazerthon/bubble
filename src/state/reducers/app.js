@@ -4,6 +4,7 @@ const defaultAppState = {
   menuOpen: true,
   sound: false,
   showAbout: false,
+  vibration: false,
 };
 
 const appReducer = (state = defaultAppState, action) => {
@@ -14,6 +15,8 @@ const appReducer = (state = defaultAppState, action) => {
       return { ...state, sound: !state.sound };
     case constants.toggleAbout:
       return { ...state, showAbout: !state.showAbout };
+    case constants.toggleVibration:
+      return { ...state, vibration: !state.vibration };
     default:
       return state;
   }

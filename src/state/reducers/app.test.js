@@ -63,4 +63,24 @@ describe('app reducer', () => {
 
     expect(result.showAbout).toBe(false);
   });
+
+  it('enables vibration when disabled', () => {
+    const initialState = {
+      vibration: false,
+    };
+
+    const result = reducer(initialState, actions.toggleVibration());
+
+    expect(result.vibration).toBe(true);
+  });
+
+  it('disables vibration when enabled', () => {
+    const initialState = {
+      vibration: true,
+    };
+
+    const result = reducer(initialState, actions.toggleVibration());
+
+    expect(result.vibration).toBe(false);
+  });
 });

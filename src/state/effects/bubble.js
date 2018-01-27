@@ -19,9 +19,10 @@ function* generateBubbles({ payload: { count } }) {
 }
 
 function* popBubble({ payload }) {
-  const { sound, image, rotation, id } = payload;
+  const { sound, vibration, image, rotation, id } = payload;
 
   yield call(sound);
+  yield call(vibration);
   yield put(actions.popBubble(image, rotation, id));
 }
 

@@ -3,6 +3,7 @@ export const constants = {
   toggleMenu: '[APP] TOGGLE MENU OPEN OR CLOSED',
   toggleSound: '[APP] TOGGLE SOUND ON OR OFF',
   toggleAbout: '[APP] TOGGLE ABOUT VIEW ON OR OFF',
+  toggleVibration: '[APP] TOGGLE VIBRATION ON OR OFF',
 };
 
 export const actions = {
@@ -17,5 +18,8 @@ export const actions = {
   }),
   toggleAbout: () => ({
     type: constants.toggleAbout,
+  }),
+  toggleVibration: () => ({
+    type: constants.toggleVibration,
   }),
 };

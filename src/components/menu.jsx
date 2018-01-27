@@ -2,7 +2,16 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-import { VolumeX, Volume2, Plus, Minus, X, HelpCircle } from 'react-feather';
+import {
+  VolumeX,
+  Volume2,
+  Plus,
+  Minus,
+  X,
+  HelpCircle,
+  Zap,
+  ZapOff,
+} from 'react-feather';
 
 import MenuHandle from './menu-handle';
 import Icon from './icon';
@@ -69,6 +78,8 @@ function Menu({
   toggleSound,
   showAbout,
   toggleAbout,
+  vibration,
+  toggleVibration,
 }) {
   const setter = setBubblesPerRow(
     minBubblesPerRow,
@@ -100,6 +111,9 @@ function Menu({
         </Left>
         <Middle />
         <Right>
+          <IconContainer onClick={toggleVibration}>
+            {vibration ? <Zap /> : <ZapOff />}
+          </IconContainer>
           <IconContainer onClick={toggleAbout}>
             {showAbout ? <X /> : <HelpCircle />}
           </IconContainer>
@@ -123,13 +137,19 @@ Menu.propTypes = {
   toggleSound: PropTypes.func,
   showAbout: PropTypes.bool,
   toggleAbout: PropTypes.func,
+  vibration: PropTypes.bool,
+  toggleVibration: PropTypes.func,
 };
+
+const noOp = () => {};
 
 Menu.defaultProps = {
   sound: false,
-  toggleSound: () => {},
+  toggleSound: noOp,
   showAbout: false,
-  toggleAbout: () => {},
+  toggleAbout: noOp,
+  vibration: false,
+  toggleVibration: noOp,
 };
 
 export default Menu;

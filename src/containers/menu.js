@@ -5,7 +5,7 @@ import { actions as appActions } from '../state/actions/app';
 
 const mapStateToProps = ({
   bubble: { bubblesPerRow, minBubblesPerRow, maxBubblesPerRow },
-  app: { menuOpen, sound, showAbout },
+  app: { menuOpen, sound, showAbout, vibration },
 }) => ({
   bubblesPerRow,
   minBubblesPerRow,
@@ -13,6 +13,7 @@ const mapStateToProps = ({
   open: menuOpen,
   sound,
   showAbout,
+  vibration,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -21,6 +22,7 @@ const mapDispatchToProps = dispatch => ({
   toggleOpenClose: () => dispatch(appActions.toggleMenu()),
   toggleSound: () => dispatch(appActions.toggleSound()),
   toggleAbout: () => dispatch(appActions.toggleAbout()),
+  toggleVibration: () => dispatch(appActions.toggleVibration()),
 });
 
 export default connectWithLifecycle(mapStateToProps, mapDispatchToProps)(Menu);
