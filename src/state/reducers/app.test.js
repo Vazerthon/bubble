@@ -83,4 +83,50 @@ describe('app reducer', () => {
 
     expect(result.vibration).toBe(false);
   });
+
+  it('enables show background colour when disabled', () => {
+    const initialState = {
+      showBackgroundColour: false,
+    };
+
+    const result = reducer(initialState, actions.toggleShowBackgroundColour());
+
+    expect(result.showBackgroundColour).toBe(true);
+  });
+
+  it('disables show background colour when enabled', () => {
+    const initialState = {
+      showBackgroundColour: false,
+    };
+
+    const result = reducer(initialState, actions.toggleShowBackgroundColour());
+
+    expect(result.showBackgroundColour).toBe(true);
+  });
+
+  it('moves to next background colour correctly', () => {
+    const initialState = {
+      bgColours: ['a', 'b', 'c'],
+      bgColourIndex: 1,
+      bgColour: 'b',
+    };
+
+    const result = reducer(initialState, actions.showNextBackgroundColour());
+
+    expect(result.bgColourIndex).toBe(2);
+    expect(result.bgColour).toBe('c');
+  });
+
+  it('moves to first background colour if at the end of the list', () => {
+    const initialState = {
+      bgColours: ['a', 'b', 'c'],
+      bgColourIndex: 2,
+      bgColour: 'c',
+    };
+
+    const result = reducer(initialState, actions.showNextBackgroundColour());
+
+    expect(result.bgColourIndex).toBe(0);
+    expect(result.bgColour).toBe('a');
+  });
 });

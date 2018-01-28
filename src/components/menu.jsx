@@ -11,6 +11,8 @@ import {
   HelpCircle,
   Zap,
   ZapOff,
+  Eye,
+  EyeOff,
 } from 'react-feather';
 
 import MenuHandle from './menu-handle';
@@ -80,6 +82,8 @@ function Menu({
   toggleAbout,
   vibration,
   toggleVibration,
+  showBackgroundColour,
+  toggleShowBackgroundColour,
 }) {
   const setter = setBubblesPerRow(
     minBubblesPerRow,
@@ -114,6 +118,9 @@ function Menu({
           <IconContainer onClick={toggleVibration}>
             {vibration ? <Zap /> : <ZapOff />}
           </IconContainer>
+          <IconContainer onClick={toggleShowBackgroundColour}>
+            {showBackgroundColour ? <Eye /> : <EyeOff />}
+          </IconContainer>
           <IconContainer onClick={toggleAbout}>
             {showAbout ? <X /> : <HelpCircle />}
           </IconContainer>
@@ -139,6 +146,8 @@ Menu.propTypes = {
   toggleAbout: PropTypes.func,
   vibration: PropTypes.bool,
   toggleVibration: PropTypes.func,
+  showBackgroundColour: PropTypes.bool,
+  toggleShowBackgroundColour: PropTypes.func,
 };
 
 const noOp = () => {};
@@ -150,6 +159,8 @@ Menu.defaultProps = {
   toggleAbout: noOp,
   vibration: false,
   toggleVibration: noOp,
+  showBackgroundColour: false,
+  toggleShowBackgroundColour: noOp,
 };
 
 export default Menu;

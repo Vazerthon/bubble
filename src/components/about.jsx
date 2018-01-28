@@ -60,7 +60,7 @@ function About() {
   return (
     <Container>
       <Modal>
-        <Title>Bubble!</Title>
+        <Title>Bubble Biz!</Title>
         <Middle>
           Who doesn&#39;t like popping bubble wrap?! Now you can satisfy your
           cravings wherever and whenever you desire!
