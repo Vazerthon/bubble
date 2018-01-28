@@ -3,20 +3,21 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 const Container = styled.button`
-  border: 2px solid #222222;
+  border: 2px solid ${({ theme }) => `${theme.colour.secondary}`};
   border-radius: ${({ size }) => `${size}px`};
   width: ${({ size }) => `${size}px`};
   height: ${({ size }) => `${size}px`};
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 2px 1px 6px #222222;
-  background: #444444;
+  box-shadow: 2px 1px 6px ${({ theme }) => `${theme.colour.secondary}`};
+  background: ${({ theme }) => `${theme.colour.primary}`};
   outline: none;
   cursor: pointer;
 
   :hover {
-    background: ${({ disabled }) => (disabled ? '#662222' : '#666666')};
+    background: ${({ disabled, theme: { colour } }) =>
+      disabled ? colour.danger : colour.accent};
   }
 `;
 

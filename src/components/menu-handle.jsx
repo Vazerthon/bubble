@@ -17,7 +17,7 @@ MenuHandle.propTypes = {
 };
 
 MenuHandle.defaultProps = {
-  onClick: () => { },
+  onClick: () => {},
 };
 
 export default MenuHandle;

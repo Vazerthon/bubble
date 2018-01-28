@@ -21,7 +21,7 @@ const Container = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  background: #444444;
+  background: ${({ theme }) => `${theme.colour.primary}`};
   width: 100%;
   height: 6vh;
   transform: ${({ open }) => (open ? 'none' : 'translateY(-5vh)')};
@@ -32,7 +32,7 @@ const MenuBar = styled.div`
   display: flex;
   flex: 1;
   padding: 8px;
-  border-bottom: 3px solid #222222;
+  border-bottom: 3px solid ${({ theme }) => `${theme.colour.secondary}`};
   justify-content: space-between;
 `;
 

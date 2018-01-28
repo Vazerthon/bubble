@@ -15,16 +15,6 @@ Contributions are welcome. Please raise a PR or Issue if you have a suggestion
 
 ## TODO
 
-* [x] Graphics - 4 unpopped, 4 popped? Rotate and randomise
-* [x] Show/hide menu
-* [x] Remove randomness from reducer
-* [x] Resize bubbles with slider
-* [ ] Vibration
-* [x] Vibration disable button
-* [x] Sounds
-* [x] Sound disable button
-* [x] CircleCI build/deploy
-* [x] About page / modal
 * [ ] Save state to local storage
 * [ ] Aria
 * [ ] About history location /about
@@ -33,17 +23,27 @@ Contributions are welcome. Please raise a PR or Issue if you have a suggestion
 * [ ] Reset game button
 * [ ] Offset rows
 * [ ] State selectors
-* [ ] Use theme provider
 * [ ] Bug - scroll triggers window resize (chrome mobile)
 * [ ] Add styleguidist?
 * [ ] Auto bump version number on builds (package and manifest)
 * [ ] Detect if vibration is possible?
-* [x] Plus/minus buttons instead of slider for bubbles per row?
 * [ ] Picture behind mode?
-* [x] Handle window resize
 * [ ] Total popped count?
 * [ ] All bubbles popped detection?
 * [ ] Confetti mode (particle emitter)
+* [x] Use theme provider
+* [x] Vibration
+* [x] Handle window resize
+* [x] Vibration disable button
+* [x] Sounds
+* [x] Sound disable button
+* [x] CircleCI build/deploy
+* [x] About page / modal
+* [x] Plus/minus buttons instead of slider for bubbles per row?
+* [x] Graphics - 4 unpopped, 4 popped? Rotate and randomise
+* [x] Show/hide menu
+* [x] Remove randomness from reducer
+* [x] Resize bubbles with slider
 
 --- useful links ---
 
