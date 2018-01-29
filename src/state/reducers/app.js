@@ -14,7 +14,7 @@ const defaultAppState = {
   sound: false,
   showAbout: false,
   vibration: false,
-  showBackgroundColour: false,
+  showBackgroundColour: true,
   bgColours,
   bgColourIndex: 0,
   bgColour: bgColours[0],

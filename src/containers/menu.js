@@ -4,7 +4,7 @@ import { actions as bubbleActions } from '../state/actions/bubble';
 import { actions as appActions } from '../state/actions/app';
 
 const mapStateToProps = ({
-  bubble: { bubblesPerRow, minBubblesPerRow, maxBubblesPerRow },
+  bubble: { bubblesPerRow, minBubblesPerRow, maxBubblesPerRow, bubbles },
   app: { menuOpen, sound, showAbout, vibration, showBackgroundColour },
 }) => ({
   bubblesPerRow,
@@ -15,6 +15,8 @@ const mapStateToProps = ({
   showAbout,
   vibration,
   showBackgroundColour,
+  bubbleCount: bubbles.length,
+  poppedCount: bubbles.filter(b => b.popped).length,
 });
 
 const mapDispatchToProps = dispatch => ({

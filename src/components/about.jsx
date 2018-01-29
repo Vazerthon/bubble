@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import Link from './link';
 
 const Container = styled.div`
   font-family: sans;
@@ -38,11 +39,6 @@ const Middle = styled.div`
 
 const Bottom = styled.div`
   font-size: ${({ theme }) => `${theme.font.small}`};
-`;
-
-const Link = styled.a`
-  color: ${({ theme }) => `${theme.colour.danger}`};
-  font-weight: 600;
 `;
 
 const BlankTargetLink = ({ to, children }) => (

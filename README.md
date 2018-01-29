@@ -20,7 +20,6 @@ Contributions are welcome. Please raise a PR or Issue if you have a suggestion
 * [ ] About history location /about
 * [ ] Install to home screen
 * [ ] Modes - photo-real / graphic
-* [ ] Reset game button
 * [ ] Offset rows
 * [ ] State selectors
 * [ ] Bug - scroll triggers window resize (chrome mobile)
@@ -28,9 +27,10 @@ Contributions are welcome. Please raise a PR or Issue if you have a suggestion
 * [ ] Auto bump version number on builds (package and manifest)
 * [ ] Detect if vibration is possible?
 * [ ] Picture behind mode?
-* [ ] Total popped count?
 * [ ] All bubbles popped detection?
 * [ ] Confetti mode (particle emitter)
+* [x] Reset game button
+* [x] Total popped count?
 * [x] Use theme provider
 * [x] Vibration
 * [x] Handle window resize
