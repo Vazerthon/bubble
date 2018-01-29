@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Menu } from 'react-feather';
+import { MdMenu } from 'react-icons/lib/md';
 
 import Icon from './icon';
 
 function MenuHandle({ onClick }) {
   return (
     <Icon onClick={onClick}>
-      <Menu />
+      <MdMenu size={30} />
     </Icon>
   );
 }
