@@ -63,6 +63,7 @@ const Middle = styled.div`
   display: flex;
   flex-grow: 2; /* TODO grow less on small screens? */
   justify-content: space-around;
+  align-items: center;
 `;
 
 const Right = styled.div`
